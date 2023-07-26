@@ -91,6 +91,21 @@
     \end{figure}
 }
 
+%% This will proper format the figure captions, and also
+% expand the image to fill the maximum width and height available:
+% \ABNTfigureAuto{caption}{reference}{path}{label}
+\newcommand{\ABNTfigureAuto}[4]{
+
+    \begin{figure}[!htb]
+        \centering
+        \vspace*{10pt}
+        \caption{#1}
+        \includegraphics[width=0.9\textwidth,height=0.57\textheight,keepaspectratio]{#3}
+        \caption*{\textbf{Fonte:} #2}
+        \label{#4}
+    \end{figure}
+}
+
 %% This will implement boards, that are like tables, but
 % used mainly for qualitative data:
 \newcounter{boards}
