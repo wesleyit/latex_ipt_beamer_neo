@@ -1,7 +1,8 @@
 % =============================================================================
-%% Slide Templates
-% This section if designed to provide simple commands which users can
-% issue in order to create slides with the same visual appearance:
+%% Slide Templates, Tools and Modifiers
+% This section is designed to provide simple commands which users can
+% issue in order to create slides with the same visual appearance, and
+% also to configure important working aspects:
 
 %% This will create a cover slide:
 \newcommand{\SlideCover}{{
@@ -114,5 +115,15 @@
     \end{table}
 }
 
+%% This will create a nice table of contents before each section:
+\AtBeginSection[]
+{
+    \begingroup
+    \SlideTextA{Conteúdo}{
+        \tableofcontentscurrent
+    }
+    \endgroup
+}
+\setbeamertemplate{section in toc}{$\blacktriangleright$ \inserttocsection}
 
 % =============================================================================
