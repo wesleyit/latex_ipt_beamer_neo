@@ -1,0 +1,118 @@
+% =============================================================================
+%% Slide Templates
+% This section if designed to provide simple commands which users can
+% issue in order to create slides with the same visual appearance:
+
+%% This will create a cover slide:
+\newcommand{\SlideCover}{{
+            \usebackgroundtemplate{\includegraphics[width=\paperwidth]{./03_images/template/IPT_Cover.png}}
+            \color{fgcolor}
+            \setbeamertemplate{footline}{}
+            \begin{frame}
+                \vspace*{12\baselineskip}
+                \huge{\textbf\thstitle}\par
+                \smallskip
+                \Large{\thsprof}\par
+                \bigskip
+                \large{\textbf\thstask}\par
+                \normalsize{\thsstudent}\par
+                \bigskip
+                \bigskip
+                \small{\thscity\space--\space\thsmonth, \thsyear}\par
+                \bigskip
+            \end{frame}}
+}
+
+%% This will create the default slide for general purpose content:
+
+\newcommand{\SlideTextA}[2]{{
+            \usebackgroundtemplate{\includegraphics[width=\paperwidth]{./03_images/template/IPT_Default_Slide.png}}
+            \color{fgcolor}
+            \begin{frame}
+                \frametitle{#1}
+                #2
+            \end{frame}}
+}
+
+%% This slide will receive an image as a parameter and use it as background:
+\newcommand{\SlideGBImage}[3]{{
+            \usebackgroundtemplate{\includegraphics[width=\paperwidth]{#1}}
+            \color{bgcolor}
+            \begin{frame}
+                \frametitle{#2}
+                #3
+            \end{frame}}
+}
+
+%% This will create a References section, splitting the content in multiple slides if necessary:
+\newcommand{\SlideRefs}[2]{{
+            \usebackgroundtemplate{\includegraphics[width=\paperwidth]{./03_images/template/IPT_Default_Slide.png}}
+            \color{fgcolor}
+            \begin{frame}[allowframebreaks]
+                \frametitle{#1}
+                \renewcommand*{\bibfont}{\footnotesize}
+                #2
+            \end{frame}}
+}
+
+%% This will create a closing slide, with the big IPT logo:
+\newcommand{\SlideEnd}{{
+
+            \setbeamercolor{background canvas}{bg=fgcolor}
+            \color{bgcolor}
+            \setbeamertemplate{footline}{}
+            \begin{frame}
+                \centering
+                \includegraphics[width=100px]{./03_images/template/IPT_logo_blue_square.png}
+
+                \large{OBRIGADO!}
+            \end{frame}}
+}
+
+%% This will position the titles at the center of the slides:
+\setbeamertemplate{frametitle}{
+    \begin{center}
+        \bigskip
+        \textbf
+        \insertframetitle
+    \end{center}
+}
+
+%% This will proper format the figure captions:
+% \ABNTfigure{caption}{reference}{path}{size}{label}
+\newcommand{\ABNTfigure}[5]{
+    \begin{figure}[ht]
+        \centering
+        \caption{#1}
+        \includegraphics[#4]{#3}
+        \caption*{\textbf{Fonte:} #2}
+        \label{#5}
+    \end{figure}
+}
+
+%% This will implement boards, that are like tables, but
+% used mainly for qualitative data:
+\newcounter{boards}
+\newcommand{\listboardname}{Lista de Quadros}
+\newcommand{\board}[1] {
+    \refstepcounter{boards}
+    \par\noindent\textbf{Quadro \theboards\space--\space}#1
+    \addcontentsline{lob}{boards}
+    {\protect\numberline{\theboards}#1}\par
+}
+
+%% Now the boards environment is created, this shortcut will
+% make it easier to use them:
+% \ABNTboard{caption}{reference}{label}{tabular}
+\newcommand{\ABNTboard}[4]{
+    \begin{table}[ht]
+        \centering
+        \board{#1}
+        \label{#3}
+        #4
+        \caption*{\textbf{Fonte:} #2}
+    \end{table}
+}
+
+
+% =============================================================================
